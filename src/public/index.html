@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Socket {{ message }}</h1>
+        <br>
+        <div class="enterUser">
+            <input type="text" v-model="name" placeholder="Username">
+            <button @click="enterName">Logar</button>
+        </div>
+
+        <br><br>
+        <div class="container">
+            <ul>
+                <li v-for="(item, index) in users" :key="index" @click="selectedUser(item)">
+                    {{ item }}
+                </li>
+            </ul>
+
+            <div class="chat">
+                <div class="messages">
+                    <div v-for="(item, index) in messages" :class="verifyUser(item.sender)">
+                        <h4>{{ item.sender }}</h4>
+                        <p>{{ item.message }}</p>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" v-model="message" placeholder="mensagem">
+                    <button @click="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>
